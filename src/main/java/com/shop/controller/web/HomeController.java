@@ -1,7 +1,10 @@
 package com.shop.controller.web;
 
 import com.shop.model.UserModel;
+import com.shop.service.ICategoryService;
+import com.shop.service.INewService;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +15,16 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/trang-chu"})
 public class HomeController extends HttpServlet {
+    @Inject
+    private ICategoryService categoryService;
+
+    @Inject
+    private INewService newService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        UserModel userModel = new UserModel();
-        userModel.setFullName("Hello world");
-        request.setAttribute("model", userModel);
+        Long code = 1L;
+        request.setAttribute("news", newService.findByCategoryId(code));
+        request.setAttribute("categories", categoryService.findAll());
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
         rd.forward(request, response);
     }

@@ -22,5 +22,11 @@ dependencies {
     runtimeOnly group: 'org.glassfish.web', name: 'jstl-impl', version: '1.2'
     // https://mvnrepository.com/artifact/opensymphony/sitemesh
     implementation group: 'opensymphony', name: 'sitemesh', version: '2.4.2'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+    // https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet
+    implementation group: 'org.jboss.weld.servlet', name: 'weld-servlet', version: '2.4.8.Final'
+
+
 
 }
